@@ -7262,27 +7262,29 @@ var connection_lamp_all;
 var statusCurtain;
 var tv = 0;
 var valorCheck = "";
-var socket = io.connect('http://localhost:5040');
+var socket = io.connect('http://10.88.112.88:5040');
 
 
 function statusLampOff(idLampOffimg,src) {
-    document.getElementById(idLampOffimg).src = src;
+    document.getElementById(idLampOffimg,src).src = src;
 }
 
 function statusLampOn(idLampOnimg,src) {
-    document.getElementById(idLampOnimg).src = src;
+    document.getElementById(idLampOnimg,src).src = src;
 }
 
 //FUNÇAO LAMPADA bathroom
 function acenderLampBathroom() {
     if (bathroom == 0) {
+        bathroom = 1;
         connection_lamp_all += 1;
         statusLampOn("lampbathroom","img/ledligada.png");
-       // status();
+        status();
     } else {
+        bathroom = 0;
         statusLampOff("lampbathroom","img/leddesligada.png");
         connection_lamp_all -= 1;
-       // status();
+        status();
     }
 
 }
@@ -7290,7 +7292,7 @@ function sendLampBathroom(){
   socket.emit('lamp_All', "lampBathroom");
 }
 // FUNÇAO DA LAMPADA DA kitchen
-/*function acenderLampkitchen() {
+function acenderLampkitchen() {
     if (kitchen == 0) {
         kitchen = 1;
         statusLampOn("lampkitchen","img/ledligada.png");
@@ -7302,7 +7304,6 @@ function sendLampBathroom(){
         connection_lamp_all -= 1;
         status();
     }
-    socket.emit('lamp_All', "kitchen" + kitchen);
 }
 
 // FUNÇAO DA LAMPADA DO bedroom
@@ -7318,7 +7319,6 @@ function acenderLampbedroom() {
         connection_lamp_all -= 1;
         status();
     }
-    socket.emit('lamp_All', "bedroom" + bedroom);
 }
 // FUNÇAO DA LAMPADA 1 DA SALA
 function acenderLamproomOne() {
@@ -7333,7 +7333,6 @@ function acenderLamproomOne() {
         connection_lamp_all -= 1;
         status();
     }
-    socket.emit('lamp_All', "roomOne" + roomOne);
 }
 //FUNÇAO DA LAMPADA 2 DA SALA
 function acenderLamproomTwo() {
@@ -7348,7 +7347,6 @@ function acenderLamproomTwo() {
         connection_lamp_all -= 1;
         status();
     }
-    socket.emit('lamp_All', "roomTwo" + roomTwo);
 }
 
 function status() {
@@ -7394,8 +7392,7 @@ function controlAllLamps() {
         roomTwo = 0;
         connection_lamp_all = 0;
     }
-    socket.emit('lamp_All', "allLamp" + valorCheck);
-}*/
+}
 
 //FUNCAO CORTINA
 function activeCurtain() {
@@ -7422,15 +7419,15 @@ function acaoBtn() {
 socket.on('connect', function(data) {
   console.log("Conectado");
   socket.on('allLamp',function(data){
-    data.lampBathroom == 0 ? statusLampOn("lampbathroom","img/ledligada.png") : statusLampOff("lampbathroom","img/leddesligada.png");
+    data.lampBathroom == 0 ? statusLampOff("lampbathroom","img/ledligada.png") : statusLampOn("lampbathroom","img/leddesligada.png");
     bathroom = data.lampBathroom;
-    data.lampKitchen == 0 ? statusLampOn("lampKitchen","img/ledligada.png") : statusLampOff("lampbathroom","img/leddesligada.png");
+    data.lampKitchen == 0 ? statusLampOff("lampKitchen","img/ledligada.png") : statusLampOn("lampbathroom","img/leddesligada.png");
       kitchen = data.lampKitchen;
-    data.lampBedroom == 0 ? statusLampOn("lampbedroom","img/ledligada.png") : statusLampOff("lampbedroom","img/leddesligada.png");
+    data.lampBedroom == 0 ? statusLampOff("lampbedroom","img/ledligada.png") : statusLampOn("lampbedroom","img/leddesligada.png");
       bedroom = data.lampBedroom;
-    data.lampRoomOne == 0 ? statusLampOn("lamp1Sala","img/ledligada.png") : statusLampOff("lamp1Sala","img/leddesligada.png");
+    data.lampRoomOne == 0 ? statusLampOff("lamp1Sala","img/ledligada.png") : statusLampOn("lamp1Sala","img/leddesligada.png");
       roomOne = data.lampRoomOne;
-    data.lampRoomTwo == 0 ? statusLampOn("lamp2Sala","img/ledligada.png") : statusLampOff("lamp2Sala","img/leddesligada.png");
+    data.lampRoomTwo == 0 ? statusLampOff("lamp2Sala","img/ledligada.png") : statusLampOn("lamp2Sala","img/leddesligada.png");
       roomTwo = data.lampRoomTwo;
     console.log(data);
   });

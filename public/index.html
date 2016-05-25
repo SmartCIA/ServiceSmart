@@ -15,7 +15,6 @@
     <script src="style/JS/button.js"></script>
     <script src="style/JS/collapse.js"></script>
     <script src="style/JS/modal.js"></script>
-    <script src="style/cia.js"></script>
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-route.min.js"></script>
     <script src="lib/ui-bootstrap-tpls-0.12.0.min.js"></script>
@@ -71,8 +70,7 @@
             <article class="campo_funcionalidade" title="Lampada Cozinha">
               <figure class="lampada1">
                   <label class="label-button"><span>Cozinha</span></label>
-                  <img class="cursor" id="lampCozinha" src="img/leddesligada.png" data-loading-text="Aguarde..." onclick="acenderLampCozinha()" 
-                  ng-click="toggle_relay_kitchen()">
+                  <img class="cursor" id="lampkitchen" src="img/leddesligada.png" data-loading-text="Aguarde..." onclick="acenderLampkitchen()">
                 <figcaption>
                  
                 </figcaption>
@@ -82,8 +80,8 @@
             <article class="campo_funcionalidade" title="Quarto - Lampada">
               <figure class="lampada1">
                  <label class="label-button"><span>Quarto</span></label>
-                 <img class="cursor" id="lampQuarto" src="img/leddesligada.png" data-loading-text="Aguarde..." onclick="acenderLampQuarto()" 
-                 ng-click="toggle_relay_bedroom()">
+                 <img class="cursor" id="lampbedroom" src="img/leddesligada.png" data-loading-text="Aguarde..." onclick="acenderLampbedroom()" 
+                 >
                <figcaption>
                  
                </figcaption>
@@ -93,8 +91,7 @@
             <article class="campo_funcionalidade" title="SALA - Lampada 1">
               <figure class="lampada1">
                 <label class="label-button"><span>Sala 1º</span></label>
-                <img class="cursor" id="lamp1Sala" src="img/leddesligada.png"  data-loading-text="Aguarde..." onclick="acenderLampSala1()" 
-                    ng-click="toggle_relay_room()">
+                <img class="cursor" id="lamp1Sala" src="img/leddesligada.png"  data-loading-text="Aguarde..." onclick="acenderLamproomOne()">
                   <figcaption>
                   
                   </figcaption>
@@ -104,8 +101,7 @@
             <article class="campo_funcionalidade" title="SALA - Lampada 2">
               <figure class="lampada1">
                     <label class="label-button"><span>Sala 2º</span></label>
-                    <img class="cursor" id="lamp2Sala" src="img/leddesligada.png" data-loading-text="Aguarde..." onclick="acenderLampSala2()" 
-                       ng-click="toggle_relay_room2()">
+                    <img class="cursor" id="lamp2Sala" src="img/leddesligada.png" data-loading-text="Aguarde..." onclick="acenderLamproomTwo()">
                     <figcaption>
                       
                     </figcaption>
@@ -255,5 +251,6 @@
       </div>
       <script src="javascripts/service.js"></script>
       <script src="javascripts/app.js"></script>
+      <script src="style/cia.js"></script>
   </body>
 </html>

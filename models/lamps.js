@@ -1,10 +1,10 @@
-var bathroom = 1;
-var connection_lamp_all = 1;
-var kitchen = 1;
-var roomOne = 1;
-var roomTwo = 1;
-var controlAll_lamp = 1;
-var bedroom = 1;
+var bathroom = 0;
+var connection_lamp_all = 0;
+var kitchen = 0;
+var roomOne = 0;
+var roomTwo = 0;
+var controlAll_lamp = 0;
+var bedroom = 0;
 
 exports.control_lampAll = function(){
   if(connection_lamp_all === 0){
@@ -101,11 +101,11 @@ exports.kitchen = function(){
 exports.bathroom = function(){
     if(bathroom === 0){
         bathroom = 1;
-      //  app.sensors.relay_bathroom.digitalWrite(0);
+        app.sensors.relay_bathroom.digitalWrite(0);
         statusLamps();
     } else {
       bathroom = 0;
-    //  app.sensors.relay_bathroom.digitalWrite(1);
+      app.sensors.relay_bathroom.digitalWrite(1);
       statusLamps();
     }
   return bathroom;
